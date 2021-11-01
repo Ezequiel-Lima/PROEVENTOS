@@ -1,4 +1,79 @@
-<p>Lista de eventos</p>
+<h2>Eventos</h2>
+
+<div class="form-inline">
+  <div class="form-group mb-2">
+    <label class="mr-2"></label>
+    <input type="text" class="form-control mr-2" placeholder="Buscar" [(ngModel)]="filtroLista">
+  </div>
+</div>
+
+
+<!-- <div action="" class="form-inline">
+  <div class="form-group mb-2">
+    <input type="text" class="form-control mr-2"
+    placeholder="Buscar" [(ngModel)]="filtroLista">
+    <button class="btn btn-outline-success">Buscar</button>
+  </div>
+</div> -->
+<!-- <h3>Filtro: {{filtroLista}}</h3> -->
+
+
+<table class="table table-striped">
+  <thead class="thead-dark">
+    <tr>
+      <th>
+        <button class="btn btn-outline-light btn-sm"
+          (click)="alterarImagem()">
+          {{mostrarImagem ? 'Esconder':'Mostrar'}}
+        </button>
+      </th>
+      <th>#</th>
+      <th>Imagem</th>
+      <th>Tema</th>
+      <th>Local</th>
+      <th>Data</th>
+      <th>Qtd pessoas </th>
+      <th>Lote</th>
+      <th>Opções</th>
+    </tr>
+  </thead>
+</table>
+
+
+<table class="table table-striped">
+  <tbody *ngIf="evento && evento.length">
+    <tr *ngFor="let evento of eventosFiltrados">
+      <td>{{evento.eventoId}}</td>
+      <td><img *ngIf="mostrarImagem" src="/assets/{{evento.imagemUrl}}"
+          [style.width.px] = "widthImg"
+          [style.margin.px] = "marginImg">
+      </td>
+      <td>{{evento.tema}}</td>
+      <td>{{evento.local}}</td>
+      <td>{{evento.dataEvento}}</td>
+      <td>{{evento.qtdPessoas}}</td>
+      <td>{{evento.lote}}</td>
+      <td>
+        <button class="btn btn-primary btn-sm mr-2">Editar</button>
+        <button class="btn btn-danger btn-sm">Excluir</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <tfoot>
+    <tr *ngIf="!evento.length">
+      <td colspan="8">
+        <h4>Nenhum evento marcado</h4>
+      </td>
+    </tr>
+  </tfoot>
+</table>
+
+<hr>
+
+<!-- <p>Lista de eventos</p>
 
 <div *ngFor="let evento of evento">
 <p><b>Tema:</b>{{evento.tema}}</p>
@@ -6,3 +81,4 @@
 <p><b>Quantidade:</b>{{evento.qtdPessoas}}</p>
 <hr>
 </div>
+ -->
